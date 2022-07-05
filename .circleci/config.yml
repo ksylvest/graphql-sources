@@ -36,7 +36,7 @@ jobs:
     steps:
       - checkout
       - ruby/install-deps
-      - run: bundle exec rake build
+      - run: bundle exec rake release
 
 workflows:
   version: 2.1
