@@ -151,6 +151,20 @@ WHERE "likes"."post_id" IN (1, 2, 3, ...)
 GROUP BY "likes"."post_id"
 ```
 
+### Loading with `Rails.cache`
+
+```ruby
+class UserType < GraphQL::Schema::Object
+  field :location, String, null: false
+
+  def location
+    dataloader
+      .with(GraphQL::Sources::RailsCache)
+      .load(key: "geocode:#{object.latest_ip}", fallback: -> { Geocode.for(object.latest_ip) })
+  end
+end
+```
+
 ## Status
 
 [![CircleCI](https://circleci.com/gh/ksylvest/graphql-sources.svg?style=svg)](https://circleci.com/gh/ksylvest/graphql-sources)
