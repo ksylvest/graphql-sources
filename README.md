@@ -63,7 +63,7 @@ end
 class UserType < GraphQL::Schema::Object
   field :comments, [CommentType], null: false
 
-  def profile
+  def comments
     dataloader
       .with(GraphQL::Sources::ActiveRecordCollection, ::Comment, key: :user_id)
       .load(object.id)
@@ -136,7 +136,7 @@ end
 class PostType < GraphQL::Schema::Object
   field :likes, Integer, null: false
 
-  def comments
+  def likes
     dataloader
       .with(GraphQL::Sources::ActiveRecordCount, ::Like, key: :post_id)
       .load(object.id)
