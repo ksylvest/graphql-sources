@@ -7,6 +7,7 @@ require_relative './sources/active_record_collection'
 require_relative './sources/active_record_object'
 require_relative './sources/active_storage_has_many_attached'
 require_relative './sources/active_storage_has_one_attached'
+require_relative './sources/rails_cache'
 
 module GraphQL
   # A collection of common GraphQL dataloader classes.
