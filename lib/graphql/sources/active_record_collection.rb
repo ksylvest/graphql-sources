@@ -31,6 +31,8 @@ module GraphQL
     #     WHERE "comments"."user_id" IN (...)
     #     ORDER BY "comments"."id"
     class ActiveRecordCollection < ActiveRecordBase
+      # @param keys [Array] an array of keys
+      # @return [Array] grouped records mirroring the keys
       def fetch(keys)
         models = models(keys: keys).order(:id).load_async
         dataloader.yield

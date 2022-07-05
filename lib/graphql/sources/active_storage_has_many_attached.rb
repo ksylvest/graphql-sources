@@ -28,6 +28,8 @@ module GraphQL
     #       AND "active_storage_attachments"."record_type" = 'User'
     #       AND "active_storage_attachments"."record_id" IN (...)
     class ActiveStorageHasManyAttached < ActiveStorageBase
+      # @param records [Array<ActiveRecord::Base>] an array of records
+      # @return [Array] grouped attachments mirroring the keys
       def fetch(records)
         attachments = attachments(records: records).load_async
         dataloader.yield
