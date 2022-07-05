@@ -151,6 +151,12 @@ WHERE "likes"."post_id" IN (1, 2, 3, ...)
 GROUP BY "likes"."post_id"
 ```
 
+## Status
+
+[![CircleCI](https://circleci.com/gh/ksylvest/graphql-sources.svg?style=svg)](https://circleci.com/gh/ksylvest/rhino)
+[![Maintainability](https://api.codeclimate.com/v1/badges/bc301cb72712637e67dd/maintainability)](https://codeclimate.com/github/ksylvest/graphql-sources/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/bc301cb72712637e67dd/test_coverage)](https://codeclimate.com/github/ksylvest/graphql-sources/test_coverage)
+
 ## License
 
 The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
