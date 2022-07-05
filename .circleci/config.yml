@@ -55,7 +55,7 @@ workflows:
             tags:
               only: /^v\d+\.\d+\.\d+$/
             branches:
-              ignore: /.*/
+              only: main
           requires:
             - rspec
             - rubocop
