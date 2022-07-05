@@ -25,6 +25,12 @@ jobs:
       - run: dockerize -wait tcp://localhost:5432 -timeout 2m
       - run: cd spec/dummy && rake db:schema:load
       - ruby/rspec-test
+      - run: |
+          curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-$CC_TEST_REPORTER_VERSION > ./cc-test-reporter
+          chmod +x ./cc-test-reporter
+          ./cc-test-reporter format-coverage -t simplecov coverage/coverage.json
+          ./cc-test-reporter upload-coverage
+
   rubocop:
     executor: default
     steps:
