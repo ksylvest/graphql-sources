@@ -1,0 +1,7 @@
+/coverage/
+/doc/
+/pkg/
+/spec/dummy/log
+/spec/dummy/tmp
+/spec/reports/
+/tmp/
