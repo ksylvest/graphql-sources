@@ -153,7 +153,7 @@ GROUP BY "likes"."post_id"
 
 ## Status
 
-[![CircleCI](https://circleci.com/gh/ksylvest/graphql-sources.svg?style=svg)](https://circleci.com/gh/ksylvest/rhino)
+[![CircleCI](https://circleci.com/gh/ksylvest/graphql-sources.svg?style=svg)](https://circleci.com/gh/ksylvest/graphql-sources)
 [![Maintainability](https://api.codeclimate.com/v1/badges/bc301cb72712637e67dd/maintainability)](https://codeclimate.com/github/ksylvest/graphql-sources/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/bc301cb72712637e67dd/test_coverage)](https://codeclimate.com/github/ksylvest/graphql-sources/test_coverage)
 
