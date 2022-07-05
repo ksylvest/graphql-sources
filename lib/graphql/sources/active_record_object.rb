@@ -31,6 +31,8 @@ module GraphQL
     #     WHERE "profiles"."user_id" IN (1, 2, 3, ...)
     #     ORDER BY "profiles"."id"
     class ActiveRecordObject < ActiveRecordBase
+      # @param keys [Array] an array of keys
+      # @return [Array] indexed records mirroring the keys
       def fetch(keys)
         models = models(keys: keys).order(:id).load_async
         dataloader.yield

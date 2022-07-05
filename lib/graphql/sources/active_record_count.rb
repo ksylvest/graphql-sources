@@ -31,6 +31,8 @@ module GraphQL
     #     WHERE "likes"."post_id" IN (1, 2, 3, ...)
     #     GROUP BY "likes"."post_id"
     class ActiveRecordCount < ActiveRecordBase
+      # @param keys [Array] an array of keys
+      # @return [Array] grouped counts for the keys
       def fetch(keys)
         map = models(keys: keys).group(@key).count
         keys.map { |key| map[key] || 0 }
