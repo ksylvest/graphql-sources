@@ -78,6 +78,46 @@ WHERE "comments"."user_id" IN (...)
 ORDER BY "comments"."id"
 ```
 
+### Loading `has_one_attached` Associations
+
+```ruby
+class User
+  has_one_attached :avatar
+end
+```
+
+```ruby
+class UserType < GraphQL::Schema::Object
+  field :avatar, AttachedType, null: false
+
+  def avatar
+    dataloader
+      .with(GraphQL::Sources::ActiveStorageHasOneAttached, :avatar)
+      .load(object)
+  end
+end
+```
+
+### Loading `has_many_attached` Associations
+
+```ruby
+class User
+  has_many_attached :photos
+end
+```
+
+```ruby
+class UserType < GraphQL::Schema::Object
+  field :photos, [AttachedType], null: false
+
+  def photos
+    dataloader
+      .with(GraphQL::Sources::ActiveStorageHasOneAttached, :photos)
+      .load(object)
+  end
+end
+```
+
 ### Loading Counts
 
 ```ruby
