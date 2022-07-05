@@ -10,6 +10,15 @@ If bundler is not being used to manage dependencies, install the gem by executin
 
     $ gem install graphql-sources
 
+The `GraphQL::Dataloader` plugin must be installed in the schema:
+
+```ruby
+class AppSchema < GraphQL::Schema
+  use GraphQL::Dataloader
+  # ...
+end
+```
+
 ## Usage
 
 ### Loading `has_one` Associations
