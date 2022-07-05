@@ -31,6 +31,12 @@ jobs:
       - checkout
       - ruby/install-deps
       - ruby/rubocop-check
+  release:
+    executor: default
+    steps:
+      - checkout
+      - ruby/install-deps
+      - run: bundle exec rake build
 
 workflows:
   version: 2.1
@@ -38,3 +44,12 @@ workflows:
     jobs:
       - rspec
       - rubocop
+      - release:
+          filters:
+            tags:
+              only: /^v\d\.\d\.\d$/
+            branches:
+              only: main
+          requires:
+            - rspec
+            - rubocop
