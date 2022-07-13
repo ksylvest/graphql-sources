@@ -24,6 +24,7 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency 'graphql'
   spec.add_dependency 'rails'
+  spec.add_dependency 'zeitwerk'
   spec.add_development_dependency 'factory_bot'
   spec.add_development_dependency 'pg'
   spec.add_development_dependency 'rspec_junit_formatter'

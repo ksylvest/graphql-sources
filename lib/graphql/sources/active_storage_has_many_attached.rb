@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require_relative './active_storage_base'
-
 module GraphQL
   module Sources
     # A class for loading `has_many_attached` style associations.

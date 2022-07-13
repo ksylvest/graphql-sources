@@ -4,6 +4,7 @@ PATH
     graphql-sources (1.0.0)
       graphql
       rails
+      zeitwerk
 
 GEM
   remote: https://rubygems.org/
