@@ -1,13 +1,11 @@
 # frozen_string_literal: true
 
 require 'graphql'
+require 'zeitwerk'
 
-require_relative './sources/active_record_count'
-require_relative './sources/active_record_collection'
-require_relative './sources/active_record_object'
-require_relative './sources/active_storage_has_many_attached'
-require_relative './sources/active_storage_has_one_attached'
-require_relative './sources/rails_cache'
+loader = Zeitwerk::Loader.for_gem
+loader.push_dir(__dir__, namespace: GraphQL)
+loader.setup
 
 module GraphQL
   # A collection of common GraphQL dataloader classes.

@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require_relative './active_record_base'
-
 module GraphQL
   module Sources
     # A class for loading a count of records.
