@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    graphql-sources (1.0.0)
+    graphql-sources (1.1.0)
       graphql
       rails
       zeitwerk
