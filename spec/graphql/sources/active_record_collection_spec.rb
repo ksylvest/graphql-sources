@@ -17,7 +17,7 @@ RSpec.describe GraphQL::Sources::ActiveRecordCollection do
     let!(:comments) { create_pair(:comment, user: user) }
 
     it 'loads many records' do
-      expect(result).to contain_exactly(*comments)
+      expect(result).to match_array(comments)
     end
   end
 end

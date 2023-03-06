@@ -13,3 +13,6 @@ RSpec/FilePath:
 
 Gemspec/RequireMFA:
   Enabled: false
+
+Gemspec/DevelopmentDependencies:
+  Enabled: false

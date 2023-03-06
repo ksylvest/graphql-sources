@@ -5,7 +5,7 @@ orbs:
 executors:
   default:
     docker:
-      - image: cimg/ruby:3.1.2
+      - image: cimg/ruby:3.2.1
       - image: cimg/postgres:14.2
         environment:
           POSTGRES_USER: circleci
@@ -30,7 +30,6 @@ jobs:
           chmod +x ./cc-test-reporter
           ./cc-test-reporter format-coverage -t simplecov coverage/coverage.json
           ./cc-test-reporter upload-coverage
-
   rubocop:
     executor: default
     steps:
