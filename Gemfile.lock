@@ -229,6 +229,7 @@ DEPENDENCIES
   rspec-rails
   rspec_junit_formatter
   rubocop
+  rubocop-factory_bot
   rubocop-rails
   rubocop-rake
   rubocop-rspec
