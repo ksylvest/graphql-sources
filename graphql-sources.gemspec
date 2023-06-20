@@ -30,6 +30,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'rspec_junit_formatter'
   spec.add_development_dependency 'rspec-rails'
   spec.add_development_dependency 'rubocop'
+  spec.add_development_dependency 'rubocop-factory_bot'
   spec.add_development_dependency 'rubocop-rails'
   spec.add_development_dependency 'rubocop-rake'
   spec.add_development_dependency 'rubocop-rspec'
