@@ -86,7 +86,7 @@ GEM
       activesupport (>= 5.0.0)
     globalid (1.1.0)
       activesupport (>= 5.0)
-    graphql (2.0.23)
+    graphql (2.0.24)
     i18n (1.14.1)
       concurrent-ruby (~> 1.0)
     json (2.6.3)
