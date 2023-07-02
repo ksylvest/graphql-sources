@@ -21,6 +21,32 @@ end
 
 ## Usage
 
+### Loading `belongs_to` Associations
+
+```ruby
+class Purchase < ActiveRecord::Base
+  belongs_to :visitor
+end
+```
+
+```ruby
+class Customer < ActiveRecord::Base
+  has_many :purchases
+end
+```
+
+```ruby
+class PurchaseType < GraphQL::Schema::Object
+  field :customer, [CustomerTYpe], null: false
+
+  def customer
+    dataloader
+      .with(GraphQL::Sources::ActiveRecordObject, ::Profile, key: :id)
+      .load(object.customer_id)
+  end
+end
+```
+
 ### Loading `has_one` Associations
 
 ```ruby
