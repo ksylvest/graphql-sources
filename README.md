@@ -37,7 +37,7 @@ end
 
 ```ruby
 class PurchaseType < GraphQL::Schema::Object
-  field :customer, [CustomerTYpe], null: false
+  field :customer, [CustomerType], null: false
 
   def customer
     dataloader
