@@ -147,7 +147,7 @@ class UserType < GraphQL::Schema::Object
 
   def photos
     dataloader
-      .with(GraphQL::Sources::ActiveStorageHasOneAttached, :photos)
+      .with(GraphQL::Sources::ActiveStorageHasManyAttached, :photos)
       .load(object)
   end
 end
