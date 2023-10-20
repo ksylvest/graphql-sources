@@ -17,3 +17,6 @@ Gemspec/RequireMFA:
 
 Gemspec/DevelopmentDependencies:
   Enabled: false
+
+RSpec/SpecFilePathFormat:
+  Enabled: false
