@@ -1,12 +1,12 @@
 version: 2.1
 orbs:
-  ruby: circleci/ruby@1.8.0
+  ruby: circleci/ruby@2.1.0
 
 executors:
   default:
     docker:
-      - image: cimg/ruby:3.2.1
-      - image: cimg/postgres:14.2
+      - image: cimg/ruby:3.2.2
+      - image: cimg/postgres:16.0
         environment:
           POSTGRES_USER: circleci
           POSTGRES_DB: dummy_test
