@@ -9,22 +9,6 @@ PATH
 GEM
   remote: https://rubygems.org/
   specs:
-    actioncable (7.1.1)
-      actionpack (= 7.1.1)
-      activesupport (= 7.1.1)
-      nio4r (~> 2.0)
-      websocket-driver (>= 0.6.1)
-      zeitwerk (~> 2.6)
-    actionmailbox (7.1.1)
-      actionpack (= 7.1.1)
-      activejob (= 7.1.1)
-      activerecord (= 7.1.1)
-      activestorage (= 7.1.1)
-      activesupport (= 7.1.1)
-      mail (>= 2.7.1)
-      net-imap
-      net-pop
-      net-smtp
     actionmailer (7.1.1)
       actionpack (= 7.1.1)
       actionview (= 7.1.1)
@@ -44,13 +28,6 @@ GEM
       rack-test (>= 0.6.3)
       rails-dom-testing (~> 2.2)
       rails-html-sanitizer (~> 1.6)
-    actiontext (7.1.1)
-      actionpack (= 7.1.1)
-      activerecord (= 7.1.1)
-      activestorage (= 7.1.1)
-      activesupport (= 7.1.1)
-      globalid (>= 0.6.0)
-      nokogiri (>= 1.8.5)
     actionview (7.1.1)
       activesupport (= 7.1.1)
       builder (~> 3.1)
@@ -66,12 +43,6 @@ GEM
       activemodel (= 7.1.1)
       activesupport (= 7.1.1)
       timeout (>= 0.4.0)
-    activestorage (7.1.1)
-      actionpack (= 7.1.1)
-      activejob (= 7.1.1)
-      activerecord (= 7.1.1)
-      activesupport (= 7.1.1)
-      marcel (~> 1.0)
     activesupport (7.1.1)
       base64
       bigdecimal
@@ -117,7 +88,6 @@ GEM
       net-imap
       net-pop
       net-smtp
-    marcel (1.0.2)
     mini_mime (1.1.5)
     minitest (5.20.0)
     mutex_m (0.1.2)
@@ -130,7 +100,6 @@ GEM
       timeout
     net-smtp (0.4.0)
       net-protocol
-    nio4r (2.5.9)
     nokogiri (1.15.4-x86_64-darwin)
       racc (~> 1.4)
     nokogiri (1.15.4-x86_64-linux)
@@ -139,7 +108,7 @@ GEM
     parser (3.2.2.4)
       ast (~> 2.4.1)
       racc
-    pg (1.5.4)
+    pg (1.5.5)
     psych (5.1.1.1)
       stringio
     racc (1.7.1)
@@ -151,20 +120,11 @@ GEM
     rackup (2.1.0)
       rack (>= 3)
       webrick (~> 1.8)
-    rails (7.1.1)
-      actioncable (= 7.1.1)
-      actionmailbox (= 7.1.1)
-      actionmailer (= 7.1.1)
-      actionpack (= 7.1.1)
-      actiontext (= 7.1.1)
-      actionview (= 7.1.1)
-      activejob (= 7.1.1)
-      activemodel (= 7.1.1)
-      activerecord (= 7.1.1)
-      activestorage (= 7.1.1)
-      activesupport (= 7.1.1)
-      bundler (>= 1.15.0)
-      railties (= 7.1.1)
+    rails (0.9.5)
+      actionmailer (>= 0.6.1)
+      actionpack (>= 1.4.0)
+      activerecord (>= 1.6.0)
+      rake (>= 0.4.15)
     rails-dom-testing (2.2.0)
       activesupport (>= 5.0.0)
       minitest
@@ -250,9 +210,6 @@ GEM
       concurrent-ruby (~> 1.0)
     unicode-display_width (2.5.0)
     webrick (1.8.1)
-    websocket-driver (0.7.6)
-      websocket-extensions (>= 0.1.0)
-    websocket-extensions (0.1.5)
     zeitwerk (2.6.12)
 
 PLATFORMS
