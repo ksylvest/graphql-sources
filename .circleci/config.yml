@@ -5,13 +5,14 @@ orbs:
 executors:
   default:
     docker:
-      - image: cimg/ruby:3.2.2
+      - image: cimg/ruby:3.3.0
       - image: cimg/postgres:16.0
         environment:
           POSTGRES_USER: circleci
           POSTGRES_DB: dummy_test
           POSTGRES_HOST_AUTH_METHOD: trust
     environment:
+      CI: enabled
       RAILS_ENV: test
       RACK_ENV: test
       PGHOST: localhost
@@ -23,7 +24,7 @@ jobs:
       - checkout
       - ruby/install-deps
       - run: dockerize -wait tcp://localhost:5432 -timeout 2m
-      - run: cd spec/dummy && rake db:schema:load
+      - run: bundle exec rake -f spec/dummy/Rakefile db:schema:load
       - ruby/rspec-test
       - run: |
           curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-$CC_TEST_REPORTER_VERSION > ./cc-test-reporter

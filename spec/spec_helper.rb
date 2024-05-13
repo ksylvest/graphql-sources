@@ -12,6 +12,8 @@ require 'factory_bot'
 
 FactoryBot.find_definitions
 
+ActiveRecord::Migration.maintain_test_schema!
+
 RSpec.configure do |config|
   config.include FactoryBot::Syntax::Methods
 
