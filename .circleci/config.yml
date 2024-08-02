@@ -5,7 +5,7 @@ orbs:
 executors:
   default:
     docker:
-      - image: cimg/ruby:3.3.0
+      - image: cimg/ruby:3.3.4
       - image: cimg/postgres:16.0
         environment:
           POSTGRES_USER: circleci
