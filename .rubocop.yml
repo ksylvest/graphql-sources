@@ -3,14 +3,11 @@ require:
   - rubocop-rake
   - rubocop-rails
   - rubocop-rspec
+  - rubocop-rspec_rails
 
 AllCops:
   NewCops: enable
   TargetRubyVersion: 2.6
-
-RSpec/FilePath:
-  CustomTransform:
-    GraphQL: graphql
 
 Gemspec/RequireMFA:
   Enabled: false
