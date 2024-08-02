@@ -186,6 +186,39 @@ WHERE "likes"."post_id" IN (1, 2, 3, ...)
 GROUP BY "likes"."post_id"
 ```
 
+### Loading Exists
+
+```ruby
+class User
+  has_many :purchases
+end
+```
+
+```ruby
+class Purchase
+  belongs_to :product
+  belongs_to :user
+end
+```
+
+```ruby
+class Product
+  has_many :purchases
+end
+```
+
+```ruby
+class ProductType
+  field :purchased, Boolean, null: false
+
+  def purchased
+    dataloader
+      .with(GraphQL::Sources::ActiveRecordExists, ::Purchase.where(user: context.user), key: :product_id)
+      .load(object.id)
+  end
+end
+```
+
 ### Loading with `Rails.cache`
 
 ```ruby
