@@ -44,10 +44,18 @@ jobs:
       - ruby/install-deps
       - run: bundle exec rake release
 
+  yard:
+    executor: default
+    steps:
+      - checkout
+      - ruby/install-deps
+      - run: bundle exec yard doc
+
 workflows:
   version: 2.1
   build:
     jobs:
+      - yard
       - rspec
       - rubocop
   publish:
@@ -60,5 +68,6 @@ workflows:
     jobs:
       - release:
           requires:
+            - yard
             - rspec
             - rubocop
