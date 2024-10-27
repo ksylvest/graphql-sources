@@ -21,6 +21,89 @@ end
 
 ## Usage
 
+### Loading `belongs_to` / `has_many` Associations
+
+```ruby
+class Purchase < ActiveRecord::Base
+  belongs_to :customer
+end
+```
+
+```ruby
+class Customer < ActiveRecord::Base
+  has_many :purchases
+end
+```
+
+```ruby
+class PurchaseType < GraphQL::Schema::Object
+  field :customer, CustomerType, null: false
+
+  # @return [Customer]
+  def customer
+    # SELECT * FROM "customers" WHERE "customers"."id" IN (...)
+    dataloader
+      .with(GraphQL::Sources::ActiveRecordAssociation, :customer)
+      .load(object)
+  end
+end
+```
+
+```ruby
+class CustomerType < GraphQL::Schema::Object
+  field :purchases, [PurchaseType], null: false
+
+  def purchases
+    # SELECT * FROM "customers" WHERE "customers"."id" IN (...)
+    dataloader
+      .with(GraphQL::Sources::ActiveRecordAssociation, :purchases)
+      .load(object)
+  end
+end
+```
+
+### Loading `belongs_to` / `has_one` Associations
+
+```ruby
+class Profile < ActiveRecord::Base
+  belongs_to :user
+end
+```
+
+```ruby
+class User < ActiveRecord::Base
+  has_one :profile
+end
+```
+
+```ruby
+class ProfileType < GraphQL::Schema::Object
+  field :user, [UserType], null: false
+
+  # @return [User]
+  def user
+    # SELECT * FROM "users" WHERE "users"."id" IN (...)
+    dataloader
+      .with(GraphQL::Sources::ActiveRecordAssociation, :user)
+      .load(object)
+  end
+end
+```
+
+```ruby
+class UserType < GraphQL::Schema::Object
+  field :profile, [ProfileType], null: false
+
+  # @return [Profile]
+  def profile
+      # SELECT * FROM "profiles" WHERE "profiles"."id" IN (...)
+    dataloader
+      .with(GraphQL::Sources::ActiveRecordAssociation, :profile)
+      .load(object)
+  end
+end
+```
+
 ### Loading `has_and_belongs_to_many` Associations
 
 ```ruby
@@ -41,8 +124,8 @@ class StudentType < GraphQL::Schema::Object
 
   # @return [Array<Course>]
   def courses
-    # SELECT "courses_students".* FROM "courses_students" WHERE "courses_students"."student_id" = IN (...)
-    # SELECT "courses".* FROM "courses" WHERE "courses"."id" IN (...)
+    # SELECT * FROM "courses_students" WHERE "courses_students"."student_id" = IN (...)
+    # SELECT * FROM "courses" WHERE "courses"."id" IN (...)
     dataloader
       .with(GraphQL::Sources::ActiveRecordAssociation, :courses)
       .load(object)
@@ -56,122 +139,10 @@ class CourseType < GraphQL::Schema::Object
 
   # @return [Array<Student>]
   def students
-    # SELECT "courses_students".\* FROM "courses_students" WHERE "courses_students"."course_id" = IN (...)
-    # SELECT "students".\* FROM "students" WHERE "students"."id" IN (...)
+    # SELECT * FROM "courses_students" WHERE "courses_students"."course_id" = IN (...)
+    # SELECT * FROM "students" WHERE "students"."id" IN (...)
     dataloader
       .with(GraphQL::Sources::ActiveRecordAssociation, :students)
-      .load(object)
-  end
-end
-```
-
-### Loading `belongs_to` Associations
-
-```ruby
-class Purchase < ActiveRecord::Base
-  belongs_to :visitor
-end
-```
-
-```ruby
-class Customer < ActiveRecord::Base
-  has_many :purchases
-end
-```
-
-```ruby
-class PurchaseType < GraphQL::Schema::Object
-  field :customer, [CustomerType], null: false
-
-  def customer
-    dataloader
-      .with(GraphQL::Sources::ActiveRecordObject, ::Profile, key: :id)
-      .load(object.customer_id)
-  end
-end
-```
-
-### Loading `has_one` Associations
-
-```ruby
-class Profile < ActiveRecord::Base
-  belongs_to :user
-end
-```
-
-```ruby
-class User < ActiveRecord::Base
-  has_one :profile
-end
-```
-
-```ruby
-class UserType < GraphQL::Schema::Object
-  field :profile, [ProfileType], null: false
-
-  def profile
-    dataloader
-      .with(GraphQL::Sources::ActiveRecordObject, ::Profile, key: :user_id)
-      .load(object.id)
-  end
-end
-```
-
-```sql
-SELECT "profiles".*
-FROM "profiles"
-WHERE "profiles"."user_id" IN (...)
-ORDER BY "profiles"."id"
-```
-
-### Loading `has_many` Associations
-
-```ruby
-class User
-  has_many :comments
-end
-```
-
-```ruby
-class Comment
-  belongs_to :user
-end
-```
-
-```ruby
-class UserType < GraphQL::Schema::Object
-  field :comments, [CommentType], null: false
-
-  def comments
-    dataloader
-      .with(GraphQL::Sources::ActiveRecordCollection, ::Comment, key: :user_id)
-      .load(object.id)
-  end
-end
-```
-
-```sql
-SELECT "comments".*
-FROM "comments"
-WHERE "comments"."user_id" IN (...)
-ORDER BY "comments"."id"
-```
-
-### Loading `has_one_attached` Associations
-
-```ruby
-class User
-  has_one_attached :avatar
-end
-```
-
-```ruby
-class UserType < GraphQL::Schema::Object
-  field :avatar, AttachedType, null: false
-
-  def avatar
-    dataloader
-      .with(GraphQL::Sources::ActiveStorageHasOneAttached, :avatar)
       .load(object)
   end
 end
@@ -192,6 +163,47 @@ class UserType < GraphQL::Schema::Object
   def photos
     dataloader
       .with(GraphQL::Sources::ActiveStorageHasManyAttached, :photos)
+      .load(object)
+  end
+end
+```
+
+### Loading ActiveRecord Object / ActiveRecord Collection
+
+```ruby
+class Event < ActiveRecord::Base
+  belongs_to :device
+end
+```
+
+```ruby
+class Device < ActiveRecord::Base
+  has_many :events
+end
+```
+
+```ruby
+class EventType < GraphQL::Schema::Object
+  field :device, DeviceType, null: false
+
+  # @return [Device]
+  def device
+    # SELECT * FROM "devices" WHERE "devices"."id" IN (...)
+    dataloader
+      .with(GraphQL::Sources::ActiveRecordObject, ::Device, key: :id)
+      .load(object.device_id)
+  end
+end
+```
+
+```ruby
+class DeviceType < GraphQL::Schema::Object
+  field :events, [EventType], null: false
+
+  def events
+    # SELECT * FROM "events" WHERE "events"."device_id" IN (...)
+    dataloader
+      .with(GraphQL::Sources::ActiveRecordCollection, ::Event, key: :device_id)
       .load(object)
   end
 end
