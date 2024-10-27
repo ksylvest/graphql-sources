@@ -21,6 +21,50 @@ end
 
 ## Usage
 
+### Loading `has_and_belongs_to_many` Associations
+
+```ruby
+class Student
+  has_and_belongs_to_many :courses
+end
+```
+
+```ruby
+class Course
+  has_and_belongs_to_many :students
+end
+```
+
+```ruby
+class StudentType < GraphQL::Schema::Object
+  field :courses, [CourseType], null: false
+
+  # @return [Array<Course>]
+  def courses
+    # SELECT "courses_students".* FROM "courses_students" WHERE "courses_students"."student_id" = IN (...)
+    # SELECT "courses".* FROM "courses" WHERE "courses"."id" IN (...)
+    dataloader
+      .with(GraphQL::Sources::ActiveRecordAssociation, :courses)
+      .load(object)
+  end
+end
+```
+
+```ruby
+class CourseType < GraphQL::Schema::Object
+  field :students, [StudentType], null: false
+
+  # @return [Array<Student>]
+  def students
+    # SELECT "courses_students".\* FROM "courses_students" WHERE "courses_students"."course_id" = IN (...)
+    # SELECT "students".\* FROM "students" WHERE "students"."id" IN (...)
+    dataloader
+      .with(GraphQL::Sources::ActiveRecordAssociation, :students)
+      .load(object)
+  end
+end
+```
+
 ### Loading `belongs_to` Associations
 
 ```ruby
