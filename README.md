@@ -148,6 +148,32 @@ class CourseType < GraphQL::Schema::Object
 end
 ```
 
+### Loading `has_one_attached` Associations
+
+```ruby
+class User
+  has_one_attached :photo
+end
+```
+
+```ruby
+class UserType < GraphQL::Schema::Object
+  field :avatar, AttachedType, null: false
+
+  # @return [ActiveStorage::Attachment]
+  def avatar
+    # SELECT "active_storage_attachments".*
+    # FROM "active_storage_attachments"
+    # WHERE "active_storage_attachments"."name" = 'avatar'
+    #   AND "active_storage_attachments"."record_type" = 'User'
+    #   AND "active_storage_attachments"."record_id" IN (...)
+    dataloader
+      .with(GraphQL::Sources::ActiveStorageHasOneAttached, :avatar)
+      .load(object)
+  end
+end
+```
+
 ### Loading `has_many_attached` Associations
 
 ```ruby
@@ -160,7 +186,13 @@ end
 class UserType < GraphQL::Schema::Object
   field :photos, [AttachedType], null: false
 
+  # @return [Array<ActiveStorage::Attachment>]
   def photos
+    # SELECT "active_storage_attachments".*
+    # FROM "active_storage_attachments"
+    # WHERE "active_storage_attachments"."name" = 'photos'
+    #   AND "active_storage_attachments"."record_type" = 'User'
+    #   AND "active_storage_attachments"."record_id" IN (...)
     dataloader
       .with(GraphQL::Sources::ActiveStorageHasManyAttached, :photos)
       .load(object)
