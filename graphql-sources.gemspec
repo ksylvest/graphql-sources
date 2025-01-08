@@ -16,7 +16,7 @@ Gem::Specification.new do |spec|
 
   spec.metadata['homepage_uri'] = spec.homepage
   spec.metadata['source_code_uri'] = 'https://github.com/ksylvest/graphql-sources'
-  spec.metadata['changelog_uri'] = 'https://github.com/ksylvest/graphql-sources/blob/main/CHANGELOG.md'
+  spec.metadata['changelog_uri'] = 'https://github.com/ksylvest/graphql-sources/releases'
 
   spec.files = Dir.glob('{bin,lib}/**/*') + %w[README.md LICENSE Gemfile]
 
