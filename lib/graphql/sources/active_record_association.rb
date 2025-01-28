@@ -117,8 +117,7 @@ module GraphQL
 
       # @param records [Array<ActiveRecord::Base>] an array of records
       def fetch(records)
-        preloader = ActiveRecord::Associations::Preloader.new(records: records, associations: [@association])
-        preloader.call
+        preloader = ActiveRecord::Associations::Preloader.new.preload(records, [@association])
 
         records.map { |record| record.association(@association).target }
       end

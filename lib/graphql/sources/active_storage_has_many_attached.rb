@@ -29,7 +29,7 @@ module GraphQL
       # @param records [Array<ActiveRecord::Base>] an array of records
       # @return [Array] grouped attachments mirroring the keys
       def fetch(records)
-        attachments = attachments(records: records).load_async
+        attachments = attachments(records: records)
         dataloader.yield
 
         map = attachments.group_by { |attachment| [attachment.record_type, attachment.record_id] }

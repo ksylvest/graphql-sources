@@ -23,7 +23,7 @@ Gem::Specification.new do |spec|
   spec.require_paths = ['lib']
 
   spec.add_dependency 'graphql'
-  spec.add_dependency 'rails'
+  spec.add_dependency 'rails', '~> 6.1.7'
   spec.add_dependency 'zeitwerk'
   spec.add_development_dependency 'factory_bot'
   spec.add_development_dependency 'pg'

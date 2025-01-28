@@ -32,7 +32,7 @@ module GraphQL
       # @param keys [Array] an array of keys
       # @return [Array] indexed records mirroring the keys
       def fetch(keys)
-        models = models(keys: keys).order(:id).load_async
+        models = models(keys: keys).order(:id)
         dataloader.yield
 
         map = models.index_by { |model| model[@key] }
