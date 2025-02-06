@@ -15,8 +15,9 @@ Gem::Specification.new do |spec|
   spec.required_ruby_version = '>= 2.6.0'
 
   spec.metadata['homepage_uri'] = spec.homepage
-  spec.metadata['source_code_uri'] = 'https://github.com/ksylvest/graphql-sources'
-  spec.metadata['changelog_uri'] = 'https://github.com/ksylvest/graphql-sources/releases'
+  spec.metadata['source_code_uri'] = "https://github.com/ksylvest/graphql-sources/tree/v#{GraphQL::Sources::VERSION}"
+  spec.metadata['changelog_uri'] = "https://github.com/ksylvest/graphql-sources/releases/tag/v#{GraphQL::Sources::VERSION}"
+  spec.metadata['documentation_uri'] = 'https://graphql-sources.ksylvest.com/'
 
   spec.files = Dir.glob('{bin,lib}/**/*') + %w[README.md LICENSE Gemfile]
 
