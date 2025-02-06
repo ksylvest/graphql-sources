@@ -1,5 +1,15 @@
 # GraphQL::Sources
 
+[![LICENSE](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/ksylvest/graphql-sources/blob/main/LICENSE)
+[![RubyGems](https://img.shields.io/gem/v/graphql-sources)](https://rubygems.org/gems/graphql-sources)
+[![GitHub](https://img.shields.io/badge/github-repo-blue.svg)](https://github.com/ksylvest/graphql-sources)
+[![Yard](https://img.shields.io/badge/docs-site-blue.svg)](https://graphql-sources.ksylvest.com)
+[![CircleCI](https://img.shields.io/circleci/build/github/ksylvest/graphql-sources)](https://circleci.com/gh/ksylvest/graphql-sources)
+[![Maintainability](https://api.codeclimate.com/v1/badges/bc301cb72712637e67dd/maintainability)](https://codeclimate.com/github/ksylvest/graphql-sources/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/bc301cb72712637e67dd/test_coverage)](https://codeclimate.com/github/ksylvest/graphql-sources/test_coverage)
+
+`GraphQL::Sources` is a set of predefined dataloader classes build to avoid common n-plus-one issues in a GraphQL schema with Ruby. It supports loading `has_one`, `has_many`, `belongs_to`, `has_and_belongs_to_many`, `has_one_attached` and `has_many_attached` associations.
+
 ## Installation
 
 Install the gem and add to the application's Gemfile by executing:
@@ -320,12 +330,6 @@ class UserType < GraphQL::Schema::Object
   end
 end
 ```
-
-## Status
-
-[![CircleCI](https://circleci.com/gh/ksylvest/graphql-sources.svg?style=svg)](https://circleci.com/gh/ksylvest/graphql-sources)
-[![Maintainability](https://api.codeclimate.com/v1/badges/bc301cb72712637e67dd/maintainability)](https://codeclimate.com/github/ksylvest/graphql-sources/maintainability)
-[![Test Coverage](https://api.codeclimate.com/v1/badges/bc301cb72712637e67dd/test_coverage)](https://codeclimate.com/github/ksylvest/graphql-sources/test_coverage)
 
 ## License
 
