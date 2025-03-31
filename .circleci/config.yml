@@ -81,7 +81,7 @@ workflows:
               ruby-version:
                 - "3.4.2"
                 - "3.3.7"
-                - "3.2.6"
+                - "3.2.8"
       - rubocop
       - yard
       - release:
