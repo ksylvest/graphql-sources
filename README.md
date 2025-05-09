@@ -10,7 +10,7 @@
 
 `GraphQL::Sources` is a set of predefined dataloader classes build to avoid common n-plus-one issues in a GraphQL schema with Ruby. It supports loading `has_one`, `has_many`, `belongs_to`, `has_and_belongs_to_many`, `has_one_attached` and `has_many_attached` associations.
 
-_Recent versions of [graphql-ruby](https://github.com/rmosolgo/graphql-ruby) include built-in support for loading records and associations via the `dataload_record` and `dataload_association` methods. These serve as a suitable alternative to some of the methods of loading provided by this library._
+_Recent versions of [graphql-ruby](https://github.com/rmosolgo/graphql-ruby) include built-in support for loading records and associations via the [dataload_record](https://graphql-ruby.org/api-doc/2.5.3/GraphQL/Dataloader/ActiveRecordAssociationSource.html) and [dataload_association](https://graphql-ruby.org/api-doc/2.5.3/GraphQL/Dataloader/ActiveRecordSource.html) methods. These serve as a suitable alternative to some of the methods of loading provided by this library._
 
 ## Installation
 
