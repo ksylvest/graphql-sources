@@ -17,7 +17,7 @@ executors:
     parameters:
       ruby-version:
         description: "ruby version tag"
-        default: "3.4.2"
+        default: "3.4.4"
         type: string
       postgres-version:
         description: "postgres version tag"
@@ -79,7 +79,7 @@ workflows:
           matrix:
             parameters:
               ruby-version:
-                - "3.4.2"
+                - "3.4.4"
                 - "3.3.7"
                 - "3.2.8"
       - rubocop
