@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
-require 'spec_helper'
+require "spec_helper"
 
 RSpec.describe GraphQL::Sources::ActiveRecordCount do
-  describe '#fetch' do
+  describe "#fetch" do
     subject(:result) do
       GraphQL::Dataloader.with_dataloading do |dataloader|
         dataloader
@@ -16,7 +16,7 @@ RSpec.describe GraphQL::Sources::ActiveRecordCount do
     let!(:user) { create(:user) }
     let!(:comments) { create_pair(:comment, user: user) }
 
-    it 'loads a count' do
+    it "loads a count" do
       expect(result).to eql(comments.count)
     end
   end

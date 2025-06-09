@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-require 'graphql'
-require 'zeitwerk'
+require "graphql"
+require "zeitwerk"
 
 loader = Zeitwerk::Loader.for_gem
 loader.push_dir(__dir__, namespace: GraphQL)

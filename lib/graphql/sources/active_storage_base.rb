@@ -10,7 +10,7 @@ module GraphQL
         @name = name
       end
 
-      protected
+    protected
 
       # @param records [Array<ActiveRecord::Base>] a collection of records to load attachments for
       # @return [Array<ActiveStorage::Attachment>] the associated attachments with preloaded blobs

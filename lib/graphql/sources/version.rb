@@ -2,6 +2,6 @@
 
 module GraphQL
   module Sources
-    VERSION = '1.5.4'
+    VERSION = "1.5.4"
   end
 end

@@ -21,7 +21,7 @@ module GraphQL
         @key = key
       end
 
-      protected
+    protected
 
       # @param keys [Array] an array of keys
       # @return [ActiveRecord_Relation] a collection of records

@@ -3,6 +3,6 @@
 FactoryBot.define do
   factory :profile do
     user
-    url { 'https://ksylvest.com' }
+    url { "https://ksylvest.com" }
   end
 end

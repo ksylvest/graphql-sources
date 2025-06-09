@@ -1,19 +1,13 @@
-require:
+inherit_gem:
+  rubocop-basic: rubocop.yml
+
+plugins:
   - rubocop-factory_bot
   - rubocop-rake
   - rubocop-rails
   - rubocop-rspec
   - rubocop-rspec_rails
 
-AllCops:
-  NewCops: enable
-  TargetRubyVersion: 2.6
-
-Gemspec/RequireMFA:
-  Enabled: false
-
-Gemspec/DevelopmentDependencies:
-  Enabled: false
-
 RSpec/SpecFilePathFormat:
-  Enabled: false
+  CustomTransform:
+    GraphQL: graphql
