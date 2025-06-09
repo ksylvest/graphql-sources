@@ -3,6 +3,6 @@
 FactoryBot.define do
   factory :comment do
     user
-    message { 'Test' }
+    message { "Test" }
   end
 end

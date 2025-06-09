@@ -6,15 +6,15 @@ FactoryBot.define do
 
     trait :with_avatar do
       after :build do |user|
-        io = File.open(File.join(__dir__, 'files/photo.png'))
-        user.avatar.attach(io: io, filename: 'photo.png', content_type: 'image/png')
+        io = File.open(File.join(__dir__, "files/photo.png"))
+        user.avatar.attach(io: io, filename: "photo.png", content_type: "image/png")
       end
     end
 
     trait :with_photos do
       after :build do |user|
-        io = File.open(File.join(__dir__, 'files/photo.png'))
-        user.photos.attach(io: io, filename: 'photo.png', content_type: 'image/png')
+        io = File.open(File.join(__dir__, "files/photo.png"))
+        user.photos.attach(io: io, filename: "photo.png", content_type: "image/png")
       end
     end
   end

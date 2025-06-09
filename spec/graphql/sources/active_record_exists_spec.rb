@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
-require 'spec_helper'
+require "spec_helper"
 
 RSpec.describe GraphQL::Sources::ActiveRecordExists do
-  describe '#fetch' do
+  describe "#fetch" do
     subject(:result) do
       GraphQL::Dataloader.with_dataloading do |dataloader|
         dataloader
@@ -15,16 +15,16 @@ RSpec.describe GraphQL::Sources::ActiveRecordExists do
 
     let!(:user) { create(:user) }
 
-    context 'without comments' do
-      it 'loads falsey' do
+    context "without comments" do
+      it "loads falsey" do
         expect(result).to be_falsey
       end
     end
 
-    context 'with comments' do
+    context "with comments" do
       before { create_pair(:comment, user: user) }
 
-      it 'loads truthy' do
+      it "loads truthy" do
         expect(result).to be_truthy
       end
     end

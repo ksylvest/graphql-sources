@@ -1,14 +1,14 @@
 # frozen_string_literal: true
 
-require 'simplecov'
+require "simplecov"
 SimpleCov.start
 
-ENV['RAILS_ENV'] ||= 'test'
+ENV["RAILS_ENV"] ||= "test"
 
-require_relative '../spec/dummy/config/environment'
+require_relative "../spec/dummy/config/environment"
 
-require 'rspec/rails'
-require 'factory_bot'
+require "rspec/rails"
+require "factory_bot"
 
 FactoryBot.find_definitions
 
