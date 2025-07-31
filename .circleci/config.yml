@@ -1,16 +1,7 @@
 version: 2.1
 orbs:
-  ruby: circleci/ruby@2.1.0
-
-commands:
-  codeclimate:
-    steps:
-      - run: |
-          curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-$CC_TEST_REPORTER_VERSION > ./cc
-          chmod +x ./cc
-          ./cc format-coverage -t simplecov coverage/coverage.json
-          ./cc upload-coverage
-          rm ./cc
+  ruby: circleci/ruby@2.5.3
+  qlty: qltysh/qlty-orb@0.0.11
 
 executors:
   default:
@@ -51,7 +42,8 @@ jobs:
       - run: dockerize -wait tcp://localhost:5432 -timeout 2m
       - run: bundle exec rake -f spec/dummy/Rakefile db:schema:load
       - ruby/rspec-test
-      - codeclimate
+      - qlty/coverage_publish:
+          files: ./coverage/.resultset.json
   rubocop:
     executor: default
     steps:
